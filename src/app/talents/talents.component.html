@@ -1,0 +1,9 @@
+<h2>Talents List</h2>
+<ul class="talents">
+  <li *ngFor="let talent of talents"
+    [class.selected]="talent === selectedTalent"
+    (click)="onSelect(talent)">
+    {{talent.name}} <small>{{talent.domain}}</small>
+  </li>
+</ul>
+
