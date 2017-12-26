@@ -3,7 +3,8 @@
   <li *ngFor="let talent of talents"
     [class.selected]="talent === selectedTalent"
     (click)="onSelect(talent)">
-    {{talent.name}} <small>{{talent.domain}}</small>
+    {{talent.name}} <small>{{talent.talentDomain}}</small>
+    <app-talent [talent]="selectedTalent" *ngIf="selectedTalent && (talent === selectedTalent)"></app-talent>
   </li>
 </ul>
 

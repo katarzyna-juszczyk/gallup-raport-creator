@@ -1,0 +1,9 @@
+<h2>Domains List</h2>
+<ul class="domains">
+  <li *ngFor="let domain of domains"
+    [class.selected]="domain === domainSelected"
+    (click)="onSelect(domain)">
+    {{domain.name}}
+  </li>
+</ul>
+
