@@ -1,6 +1,5 @@
 <div *ngIf="talent" >
   <h2>{{ talent.name | uppercase }} </h2>
-  <h3> {{ talent.talentDomain}} </h3>
   <ul>
     <li *ngFor="let feature of talent.talentFeatures"><strong>{{feature.name}}</strong>{{feature.description}}</li>
   </ul>

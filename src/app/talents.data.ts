@@ -4,7 +4,7 @@ import { Talent } from './talent';
 export const TALENTS: Talent[] = [
     {
       name: "Analityk",
-      talentDomain: "Myślenie strategiczne",
+      domain: "Myślenie strategiczne",
       talentFeatures: [
         {
           name: "Krótka charakterystyka",
@@ -26,7 +26,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Intelekt",
-      talentDomain: "Myślenie strategiczne",
+      domain: "Myślenie strategiczne",
       talentFeatures: [
         {
           name: "Krótka charakterystyka",
@@ -44,7 +44,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Dyscyplina",
-      talentDomain: "Działanie",
+      domain: "Działanie",
       talentFeatures: [
         {
           name: "Krótka charakterystyka",
@@ -54,7 +54,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Organizator",
-      talentDomain: "Działanie",
+      domain: "Działanie",
       talentFeatures:  [
         {
           name: "Krótka charakterystyka",
@@ -64,7 +64,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Bliskość",
-      talentDomain: "Budowanie relacji",
+      domain: "Budowanie relacji",
       talentFeatures:  [
         {
           name: "Krótka charakterystyka",
@@ -74,7 +74,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Zgodność",
-      talentDomain: "Budowanie relacji",
+      domain: "Budowanie relacji",
       talentFeatures: [
         {
           name: "Krótka charakterystyka",
@@ -84,7 +84,7 @@ export const TALENTS: Talent[] = [
     },
     {
       name: "Dowodzenie",
-      talentDomain: "Wywieranie wpływu",
+      domain: "Wywieranie wpływu",
       talentFeatures: [
         {
           name: "Krótka charakterystyka",

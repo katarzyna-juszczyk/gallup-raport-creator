@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Domain } from '../domain';
-import { DOMAINS } from '../domains.data';
-import { DomainService } from '../domain.service';
+import { TalentService } from '../talent.service';
 
 @Component({
   selector: 'app-domains',
   templateUrl: './domains.component.html',
   styleUrls: ['./domains.component.css']
 })
-
 export class DomainsComponent implements OnInit {
-  selectedDomain: Domain;
-  domains: Domain[];
-  
-  constructor( private domainService: DomainService) { }
+  domains: string[];
+  selectedDomain: string;
+
+  constructor(private talentService: TalentService) { }
 
   ngOnInit() {
-    this.getDomains();
+    console.log('domains init');
+    console.log(this.talentService.getDomains());
+    this.domains = this.talentService.getDomains();
   }
 
-  getDomains(): void {
-    this.domains = this.domainService.getDomains();
+  onSelect(domain: string) {
+    this.selectedDomain = domain;
   }
 }

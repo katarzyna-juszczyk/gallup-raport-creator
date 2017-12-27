@@ -1,9 +1,12 @@
-<h2>Domains List</h2>
-<ul class="domains">
-  <li *ngFor="let domain of domains"
-    [class.selected]="domain === domainSelected"
-    (click)="onSelect(domain)">
-    {{domain.name}}
-  </li>
-</ul>
+<div>
+   <ul>
+    <li *ngFor="let domain of domains"
+     [class.selected]="domain === selectedDomain"
+      (click)="onSelect(domain)">
+      <h2>{{domain}}</h2>
 
+      <app-talents [selectedDomain]="selectedDomain" *ngIf="selectedDomain && (domain === selectedDomain)"></app-talents>
+    
+    </li>
+  </ul>
+</div>

@@ -13,7 +13,6 @@ export class TalentComponent implements OnInit {
   constructor( private talentService: TalentService) { }
 
   ngOnInit(): void {
-
   }
 
   getTalent(): Talent {
