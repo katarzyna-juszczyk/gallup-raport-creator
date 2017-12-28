@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { TalentService } from '../talent.service';
+import { DomainService } from '../domain.service';
 
 @Component({
   selector: 'app-domains',
@@ -8,17 +9,22 @@ import { TalentService } from '../talent.service';
 })
 export class DomainsComponent implements OnInit {
   domains: string[];
-  selectedDomain: string;
+  selectedDomains: string[] = [];
 
-  constructor(private talentService: TalentService) { }
+  constructor(private talentService: TalentService, private domainService: DomainService) {}
 
   ngOnInit() {
-    console.log('domains init');
-    console.log(this.talentService.getDomains());
     this.domains = this.talentService.getDomains();
   }
 
-  onSelect(domain: string) {
-    this.selectedDomain = domain;
+  onUpdateSelected(domain: string) {
+    this.selectedDomains = this.selectedDomains.includes(domain) ? this.selectedDomains.filter(d => d !== domain) : this.selectedDomains.concat(domain);
+    this.domainService.onUpdateSelectedDomains();
   }
+
+  isSelected(domain: string) {
+    return this.selectedDomains.includes(domain);
+  }
+
+
 }

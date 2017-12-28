@@ -20,10 +20,6 @@ export class TalentService {
   }
 
   getDomainTalents(domain:string): Talent[] {
-    let filtered =  this.getTalents().filter( (talent) => {
-      return talent.domain === domain;
-    });
-    console.log(filtered);
-    return filtered;
+   return this.getTalents().filter( (talent) => talent.domain === domain );;
   }
 }

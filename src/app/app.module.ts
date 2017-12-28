@@ -6,6 +6,7 @@ import { TalentsComponent } from './talents/talents.component';
 import { TalentService } from './talent.service';
 import { TalentComponent } from './talent/talent.component';
 import { DomainsComponent } from './domains/domains.component';
+import { DomainService } from './domain.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { DomainsComponent } from './domains/domains.component';
   imports: [
     BrowserModule
   ],
-  providers: [TalentService ],
+  providers: [TalentService, DomainService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
