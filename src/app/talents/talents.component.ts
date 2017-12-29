@@ -27,11 +27,8 @@ export class TalentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.selectedDomains.length > 0) {
-      this.getDomainsTalents()
-    } else {
-      this.getTalents();
-    } 
+    this.initSelectedDomains();
+    this.getDomainsTalents();
   }
  
   ngOnDestroy() {
@@ -50,5 +47,8 @@ export class TalentsComponent implements OnInit {
     this.talents = this.selectedDomains.reduce( (array, domain) => array.concat(this.talentService.getDomainTalents(domain)), []); 
   }
 
+  initSelectedDomains(): void {
+    this.selectedDomains = this.talentService.getDomains();
+  }
   
 }

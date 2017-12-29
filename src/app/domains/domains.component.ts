@@ -9,16 +9,16 @@ import { DomainService } from '../domain.service';
 })
 export class DomainsComponent implements OnInit {
   domains: string[];
-  selectedDomains: string[] = [];
+  selectedDomains: string[];
 
   constructor(private talentService: TalentService, private domainService: DomainService) {}
 
   ngOnInit() {
     this.domains = this.talentService.getDomains();
+    this.selectedDomains = this.domains;
   }
 
   onUpdateSelected(domain: string) {
-    console.log('domains component on update selected');
     this.selectedDomains = this.selectedDomains.includes(domain) ? this.selectedDomains.filter(d => d !== domain) : this.selectedDomains.concat(domain);
     this.domainService.onUpdateSelectedDomains(this.selectedDomains);
   }

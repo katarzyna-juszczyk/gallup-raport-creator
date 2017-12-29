@@ -12,7 +12,6 @@ export class DomainService {
     
     // Service message commands  
     onUpdateSelectedDomains(domains: string[]) {
-      console.log('domainService onUpdateSelectedDomains');
         this.domainUpdatedSource.next(domains);
     }
 
