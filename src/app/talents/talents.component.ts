@@ -36,7 +36,7 @@ export class TalentsComponent implements OnInit {
   }
 
   onSelect(talent: Talent): void {
-    this.selectedTalent = talent;
+    this.selectedTalent = this.selectedTalent === talent ? null : talent;
   }
 
   getTalents(): void {
