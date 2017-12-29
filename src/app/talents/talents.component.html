@@ -1,4 +1,4 @@
-<ul class="talents">
+<ul class="talents" *ngIf="selectedDomains.length > 0">
   <li *ngFor="let talent of talents"
     [class.selected]="talent === selectedTalent"
     (click)="onSelect(talent)"

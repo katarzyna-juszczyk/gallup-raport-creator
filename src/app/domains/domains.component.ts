@@ -18,8 +18,9 @@ export class DomainsComponent implements OnInit {
   }
 
   onUpdateSelected(domain: string) {
+    console.log('domains component on update selected');
     this.selectedDomains = this.selectedDomains.includes(domain) ? this.selectedDomains.filter(d => d !== domain) : this.selectedDomains.concat(domain);
-    this.domainService.onUpdateSelectedDomains();
+    this.domainService.onUpdateSelectedDomains(this.selectedDomains);
   }
 
   isSelected(domain: string) {

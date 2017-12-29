@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TalentFeature} from '../talent-feature';
 import { Talent } from '../talent';
 import { TALENTS } from '../talents.data';
@@ -12,19 +12,18 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./talents.component.css']
 })
 export class TalentsComponent implements OnInit {
-  @Input() selectedDomains: string[];
   selectedTalent: Talent;
   talents: Talent[];
   subscription: Subscription;
-
+  selectedDomains: string[] = [];
+  
   constructor(private talentService: TalentService, private domainService: DomainService) { 
-    this.subscription = domainService.domainUpdated$.subscribe( () =>{
-       if (this.selectedDomains.length > 0) {
-          this.getDomainsTalents()
-        } else {
-          this.getTalents();
-        } 
-        });
+    
+    this.subscription = domainService.domainUpdated$.subscribe( (domains) => {
+      this.selectedDomains = domains;
+      this.getDomainsTalents();
+    });
+  
   }
 
   ngOnInit() {

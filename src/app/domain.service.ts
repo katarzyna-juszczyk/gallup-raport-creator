@@ -5,14 +5,15 @@ import { Subject } from 'rxjs/Subject';
 export class DomainService {
 
     // Observable string sources  
-    private domainUpdateDSource = new Subject < string > ();
+    private domainUpdatedSource = new Subject <any> ();
     
     // Observable string streams  
-    domainUpdated$ = this.domainUpdateDSource.asObservable();
+    domainUpdated$ = this.domainUpdatedSource.asObservable();
     
     // Service message commands  
-    onUpdateSelectedDomains() {
-        this.domainUpdateDSource.next();
+    onUpdateSelectedDomains(domains: string[]) {
+      console.log('domainService onUpdateSelectedDomains');
+        this.domainUpdatedSource.next(domains);
     }
 
 }
