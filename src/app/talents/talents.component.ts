@@ -21,6 +21,7 @@ export class TalentsComponent implements OnInit {
     
     this.subscription = domainService.domainUpdated$.subscribe( (domains) => {
       this.selectedDomains = domains;
+      this.selectedTalent = null;
       this.getDomainsTalents();
     });
   
