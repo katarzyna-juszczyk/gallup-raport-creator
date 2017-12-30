@@ -4,6 +4,7 @@ import { Talent } from '../talent';
 import { TALENTS } from '../talents.data';
 import { TalentService } from '../talent.service';
 import { DomainService } from '../domain.service';
+import { FilterService } from '../filter.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -14,17 +15,53 @@ import { Subscription } from 'rxjs/Subscription';
 export class TalentsComponent implements OnInit {
   selectedTalent: Talent;
   talents: Talent[];
-  subscription: Subscription;
-  selectedDomains: string[] = [];
+  talentsOrigin: Talent[];
+
+  domainsSubscription: Subscription;
+  filtersSubscription: Subscription;
   
-  constructor(private talentService: TalentService, private domainService: DomainService) { 
+  selectedDomains: string[] = [];
+  selectedFilters: string[] = [];
+  useFilters: boolean = false;
+  useDomains: boolean = true; 
+
+  constructor(
+    private talentService: TalentService, 
+    private domainService: DomainService,
+    private filterService: FilterService) { 
     
-    this.subscription = domainService.domainUpdated$.subscribe( (domains) => {
+    this.getTalents();
+
+    this.domainsSubscription = domainService.domainUpdated$.subscribe( (domains) => {
       this.selectedDomains = domains;
       this.selectedTalent = null;
+      this.selectedFilters = [];
+      this.useFilters = false; 
+      this.useDomains = true; 
+      
       this.getDomainsTalents();
+      
     });
   
+    this.filtersSubscription = filterService.filtersUpdated$.subscribe( (filter) => {
+      let filterName = filter.value;
+      
+      this.selectedDomains = [];
+      this.talents = this.useDomains ? [] : this.talents;
+
+      this.useFilters = true; 
+      this.useDomains = false; 
+
+      if (this.selectedFilters.includes(filterName)) {
+        this.removeFilteredTalents(filterName);
+        this.selectedFilters = this.selectedFilters.filter( f => f !== filterName);
+      } else {
+        this.addFilteredTalents(filterName);
+        this.selectedFilters = this.selectedFilters.concat(filterName);
+      }
+
+    });
+
   }
 
   ngOnInit() {
@@ -33,7 +70,8 @@ export class TalentsComponent implements OnInit {
   }
  
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.domainsSubscription.unsubscribe();
+    this.filtersSubscription.unsubscribe();
   }
 
   onSelect(talent: Talent): void {
@@ -41,15 +79,26 @@ export class TalentsComponent implements OnInit {
   }
 
   getTalents(): void {
-    this.talents = this.talentService.getTalents();
+    this.talentsOrigin = this.talents = this.talentService.getTalents();
   }
 
   getDomainsTalents(): void {
-    this.talents = this.selectedDomains.reduce( (array, domain) => array.concat(this.talentService.getDomainTalents(domain)), []); 
+    this.talents = this.selectedDomains.reduce( (array:Talent[], domain:string) => {
+      return array.concat(this.talentsOrigin.filter( (talent:Talent) => talent.domain === domain ));
+      }, []); 
+  }
+
+  addFilteredTalents(filter: string): void {
+    this.talents = this.talents.concat(this.talentsOrigin.filter(talent => (talent.name === filter) || (talent.domain === filter) ));
+  }
+
+
+  removeFilteredTalents(filter: string): void {
+    this.talents = this.talents.filter(talent => (talent.name !== filter) && (talent.domain !== filter));
   }
 
   initSelectedDomains(): void {
-    this.selectedDomains = this.talentService.getDomains();
+    this.selectedDomains = this.talentsOrigin.map(talent => talent.domain).reduce((array, domain) => array.includes(domain) ? array : [...array, domain], []);
   }
   
 }

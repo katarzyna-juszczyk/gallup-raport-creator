@@ -1,4 +1,4 @@
-<ul>
+<ul [class.inactive]="inactive">
   <li *ngFor="let domain of domains"
     [class.selected]="isSelected(domain)"
     (click)="onUpdateSelected(domain)">

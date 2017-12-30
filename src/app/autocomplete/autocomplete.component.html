@@ -1,0 +1,10 @@
+<tag-input 
+  [(ngModel)]='selectedFilters' 
+  [onlyFromAutocomplete]="true"
+  (onRemove)="onFilterRemoved($event)"
+  (onAdd)="onFilterAdded($event)"
+  (onFocus)="onInputFocused($event)"
+  [class.inactive]="inactive"
+>
+  <tag-input-dropdown [autocompleteItems]="availableFilters"></tag-input-dropdown>
+</tag-input>
