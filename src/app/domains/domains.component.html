@@ -1,8 +1,13 @@
-<ul [class.inactive]="inactive">
-  <li *ngFor="let domain of domains"
-    [class.selected]="isSelected(domain)"
-    (click)="onUpdateSelected(domain)">
-    <h2>{{domain}}</h2>
-  </li>
-</ul>
+<div [class.inactive]="inactive" class="btn-group btn-group-lg">
+    <button 
+      *ngFor="let domain of domains"
+      (click)="onUpdateSelected(domain)"
+      class="btn"
 
+      [class.selected]="isSelected(domain)"
+      [class.btn-danger]="domain ==='Myślenie strategiczne'"
+      [class.btn-primary]="domain ==='Działanie'"
+      [class.btn-dark]="domain ==='Budowanie relacji'"
+      [class.btn-warning]="domain === 'Wywieranie wpływu'"
+    >{{domain}}</button>
+</div>

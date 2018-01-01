@@ -4,7 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import {MatStepperModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -32,7 +33,8 @@ import { TalentService } from './talent.service';
     TagInputModule, 
     BrowserAnimationsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   providers: [ TalentService, DomainService, FilterService ],
   bootstrap: [AppComponent]

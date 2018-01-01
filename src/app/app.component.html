@@ -1,14 +1,41 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+
+
+<div class="container">
+  <div class="text-center">
+    <img width="300" src="https://nearperfectperformance.com/wp-content/uploads/2017/07/npp_logo_kolor-01.png">
+    <h1 class="m-5 h3">
+      {{title}}
+    </h1>
+  </div>
+
+  <mat-horizontal-stepper [linear]="isWizardLinear">
+    <mat-step [stepControl]="step1">
+      <ng-template matStepLabel>Wybierz talenty</ng-template>
+      <app-domains class="d-flex flex-wrap justify-content-center mb-5"></app-domains>
+      <app-autocomplete class="mb-5 d-block"></app-autocomplete>
+      <app-talents></app-talents>
+      <button mat-button matStepperNext>Następny krok</button>
+    </mat-step>
+    <mat-step [stepControl]="step2">
+      <ng-template matStepLabel>Podaj kolejność talentów</ng-template>
+      <button mat-button matStepperPrevious>Poprzedni krok</button>
+      <button mat-button matStepperNext>Następny krok</button>
+    </mat-step>
+    <mat-step [stepControl]="step3">
+      <ng-template matStepLabel>Skonfiguruj raport</ng-template>
+      <button mat-button matStepperPrevious>Poprzedni krok</button>
+      <button mat-button matStepperNext>Następny krok</button>
+    </mat-step>
+    <mat-step [stepControl]="step4">
+      <ng-template matStepLabel>Podgląd raportu</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Poprzedni krok</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
 </div>
 
-
-<app-domains></app-domains>
-<app-autocomplete></app-autocomplete>
-<app-talents></app-talents>
-    
 

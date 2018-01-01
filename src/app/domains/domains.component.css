@@ -1,7 +1,11 @@
-.selected {
-    color: tomato;
-}
-
 .inactive {
     opacity: .2;
+}
+
+.btn {
+    opacity: .5
+}
+
+.btn.selected {
+    opacity: 1
 }
