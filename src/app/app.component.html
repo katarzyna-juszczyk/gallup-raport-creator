@@ -9,24 +9,24 @@
   </div>
 
   <mat-horizontal-stepper [linear]="isWizardLinear">
-    <mat-step [stepControl]="step1">
+    <mat-step [stepControl]="step1" [completed]="false">
       <ng-template matStepLabel>Wybierz talenty</ng-template>
       <app-domains class="d-flex flex-wrap justify-content-center mb-5"></app-domains>
       <app-autocomplete class="mb-5 d-block"></app-autocomplete>
       <app-talents></app-talents>
       <button mat-button matStepperNext>Następny krok</button>
     </mat-step>
-    <mat-step [stepControl]="step2">
+    <mat-step [stepControl]="step2" [completed]="false">
       <ng-template matStepLabel>Podaj kolejność talentów</ng-template>
       <button mat-button matStepperPrevious>Poprzedni krok</button>
       <button mat-button matStepperNext>Następny krok</button>
     </mat-step>
-    <mat-step [stepControl]="step3">
+    <mat-step [stepControl]="step3" [completed]="false">
       <ng-template matStepLabel>Skonfiguruj raport</ng-template>
       <button mat-button matStepperPrevious>Poprzedni krok</button>
       <button mat-button matStepperNext>Następny krok</button>
     </mat-step>
-    <mat-step [stepControl]="step4">
+    <mat-step [stepControl]="step4" [completed]="false">
       <ng-template matStepLabel>Podgląd raportu</ng-template>
       You are now done.
       <div>

@@ -31,7 +31,8 @@ export class TalentsComponent implements OnInit {
     private filterService: FilterService) { 
     
     this.getTalents();
-
+    this.setClassNames();
+    
     this.domainsSubscription = domainService.domainUpdated$.subscribe( (domains) => {
       this.selectedDomains = domains;
       this.selectedTalent = null;
@@ -80,6 +81,7 @@ export class TalentsComponent implements OnInit {
 
   getTalents(): void {
     this.talentsOrigin = this.talents = this.talentService.getTalents();
+    
   }
 
   getDomainsTalents(): void {
@@ -89,7 +91,7 @@ export class TalentsComponent implements OnInit {
   }
 
   addFilteredTalents(filter: string): void {
-    this.talents = this.talents.concat(this.talentsOrigin.filter(talent => (talent.name === filter) || (talent.domain === filter) ));
+    this.talents = this.talents.concat(this.talentsOrigin.filter(talent => ((talent.name === filter) || (talent.domain === filter)) && !this.talents.includes(talent) ));
   }
 
 
@@ -101,4 +103,25 @@ export class TalentsComponent implements OnInit {
     this.selectedDomains = this.talentsOrigin.map(talent => talent.domain).reduce((array, domain) => array.includes(domain) ? array : [...array, domain], []);
   }
   
+  setClassNames(): void {
+    this.talentsOrigin = this.talentsOrigin.map((talent) => {
+      switch (talent.domain) {
+        case "Myślenie strategiczne":
+          talent.className = "danger";
+          break;
+        case "Działanie":
+          talent.className = "primary";
+          break;
+        case "Budowanie relacji":
+          talent.className = "dark";
+          break;
+        case "Wywieranie wpływu":
+          talent.className = "warning";
+          break;
+
+      };
+      return talent;
+    });
+  }
+
 }

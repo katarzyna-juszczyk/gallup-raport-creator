@@ -4,6 +4,7 @@ export class Talent {
     name: string;
     domain: string;
     talentFeatures: TalentFeature[];
+    [key: string]: any
 }
 
 
