@@ -6,6 +6,8 @@ import { TalentService } from '../talent.service';
 import { DomainService } from '../domain.service';
 import { FilterService } from '../filter.service';
 import { Subscription } from 'rxjs/Subscription';
+import { MatDialog } from '@angular/material';
+import { TalentComponent } from '../talent/talent.component';
 
 @Component({
   selector: 'app-talents',
@@ -13,7 +15,6 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./talents.component.css']
 })
 export class TalentsComponent implements OnInit {
-  selectedTalent: Talent;
   talents: Talent[];
   talentsOrigin: Talent[];
 
@@ -28,7 +29,8 @@ export class TalentsComponent implements OnInit {
   constructor(
     private talentService: TalentService, 
     private domainService: DomainService,
-    private filterService: FilterService) { 
+    private filterService: FilterService,
+    public dialog: MatDialog) { 
     
     this.getTalents();
     this.setClassNames();
@@ -68,15 +70,12 @@ export class TalentsComponent implements OnInit {
   ngOnInit() {
     this.initSelectedDomains();
     this.getDomainsTalents();
+    console.log(TalentComponent);
   }
  
   ngOnDestroy() {
     this.domainsSubscription.unsubscribe();
     this.filtersSubscription.unsubscribe();
-  }
-
-  onSelect(talent: Talent): void {
-    this.selectedTalent = this.selectedTalent === talent ? null : talent;
   }
 
   getTalents(): void {
@@ -91,9 +90,10 @@ export class TalentsComponent implements OnInit {
   }
 
   addFilteredTalents(filter: string): void {
-    this.talents = this.talents.concat(this.talentsOrigin.filter(talent => ((talent.name === filter) || (talent.domain === filter)) && !this.talents.includes(talent) ));
+    this.talents = this.talents
+                    .concat(this.talentsOrigin
+                      .filter(talent => ((talent.name === filter) || (talent.domain === filter)) && !this.talents.includes(talent) ));
   }
-
 
   removeFilteredTalents(filter: string): void {
     this.talents = this.talents.filter(talent => (talent.name !== filter) && (talent.domain !== filter));
@@ -122,6 +122,10 @@ export class TalentsComponent implements OnInit {
       };
       return talent;
     });
+  }
+
+  openFeaturesDialog(selectedTalent: Talent): void {
+     const dialogRef = this.dialog.open(TalentComponent, {data: { talent: selectedTalent }});
   }
 
 }

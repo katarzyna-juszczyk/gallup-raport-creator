@@ -1,6 +1,8 @@
-<div *ngIf="talent" >
-  <h2>{{ talent.name | uppercase }} </h2>
-  <ul>
-    <li *ngFor="let feature of talent.talentFeatures"><strong>{{feature.name}}</strong>{{feature.description}}</li>
+<h2  class="mb-0" mat-dialog-title>{{ data.talent.name | uppercase }} </h2>
+<small [className]="'d-inline-block mb-3 badge badge-pill badge-'+ data.talent.className" >{{data.talent.domain}}</small>
+<mat-dialog-content>
+  <ul class="mb-5">
+    <li class="mb-2" *ngFor="let feature of data.talent.talentFeatures"><strong class="d-block">{{feature.name}}</strong>{{feature.description}}</li>
   </ul>
-</div>
+</mat-dialog-content>
+

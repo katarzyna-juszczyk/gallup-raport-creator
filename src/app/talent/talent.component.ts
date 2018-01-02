@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Talent }         from '../talent';
 import { TalentService }  from '../talent.service';
+import { MAT_DIALOG_DATA } from '@angular/material';
+
+
 @Component({
   selector: 'app-talent',
   templateUrl: './talent.component.html',
@@ -10,7 +13,9 @@ export class TalentComponent implements OnInit {
   @Input() talent: Talent;
   
 
-  constructor( private talentService: TalentService) { }
+  constructor( 
+    private talentService: TalentService,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
   }

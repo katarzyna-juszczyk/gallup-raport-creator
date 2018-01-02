@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import {MatStepperModule} from '@angular/material';
+import { MatStepperModule, MatDialogModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -34,8 +34,10 @@ import { TalentService } from './talent.service';
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDialogModule
   ],
+  entryComponents: [TalentComponent],
   providers: [ TalentService, DomainService, FilterService ],
   bootstrap: [AppComponent]
 })
