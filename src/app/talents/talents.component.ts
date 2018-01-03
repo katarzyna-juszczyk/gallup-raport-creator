@@ -17,7 +17,6 @@ import { TalentComponent } from '../talent/talent.component';
 export class TalentsComponent implements OnInit {
   talents: Talent[];
   talentsOrigin: Talent[];
-
   domainsSubscription: Subscription;
   filtersSubscription: Subscription;
   
@@ -37,7 +36,6 @@ export class TalentsComponent implements OnInit {
     
     this.domainsSubscription = domainService.domainUpdated$.subscribe( (domains) => {
       this.selectedDomains = domains;
-      this.selectedTalent = null;
       this.selectedFilters = [];
       this.useFilters = false; 
       this.useDomains = true; 
@@ -63,6 +61,7 @@ export class TalentsComponent implements OnInit {
         this.selectedFilters = this.selectedFilters.concat(filterName);
       }
 
+      this.onUpdateSelected(this.talents);
     });
 
   }
@@ -70,7 +69,6 @@ export class TalentsComponent implements OnInit {
   ngOnInit() {
     this.initSelectedDomains();
     this.getDomainsTalents();
-    console.log(TalentComponent);
   }
  
   ngOnDestroy() {
@@ -78,15 +76,19 @@ export class TalentsComponent implements OnInit {
     this.filtersSubscription.unsubscribe();
   }
 
+  onUpdateSelected(talents: Talent[]) {
+    this.talentService.onUpdateSelectedTalents(talents);
+  }
+
   getTalents(): void {
     this.talentsOrigin = this.talents = this.talentService.getTalents();
-    
   }
 
   getDomainsTalents(): void {
     this.talents = this.selectedDomains.reduce( (array:Talent[], domain:string) => {
       return array.concat(this.talentsOrigin.filter( (talent:Talent) => talent.domain === domain ));
       }, []); 
+    this.onUpdateSelected(this.talents);
   }
 
   addFilteredTalents(filter: string): void {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Talent } from './talent';
 import { TALENTS } from './talents.data';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TalentService {
@@ -22,4 +23,16 @@ export class TalentService {
   getDomainTalents(domain:string): Talent[] {
    return this.getTalents().filter( (talent) => talent.domain === domain );
   }
+
+
+  private talentsUpdatedSource = new Subject <any> ();
+    
+  talentsUpdated$ = this.talentsUpdatedSource.asObservable();
+    
+
+  onUpdateSelectedTalents(talents: Talent[]) {
+    this.talentsUpdatedSource.next(talents);
+  }
+
+
 }

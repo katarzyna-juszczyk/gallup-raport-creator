@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatStepperModule, MatDialogModule} from '@angular/material';
+import { DndModule } from 'ng2-dnd';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,7 @@ import { DomainsComponent } from './domains/domains.component';
 import { DomainService } from './domain.service';
 import { FilterService } from './filter.service';
 import { TalentService } from './talent.service';
+import { TalentsOrderComponent } from './talents-order/talents-order.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { TalentService } from './talent.service';
     TalentsComponent,
     TalentComponent,
     DomainsComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    TalentsOrderComponent
   ],
   imports: [
     BrowserModule, 
@@ -35,7 +38,8 @@ import { TalentService } from './talent.service';
     CommonModule,
     ReactiveFormsModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    DndModule.forRoot()
   ],
   entryComponents: [TalentComponent],
   providers: [ TalentService, DomainService, FilterService ],

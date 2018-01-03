@@ -11,7 +11,7 @@ import { Talent } from './talent';
 export class AppComponent {
   title = 'Konfigurator Raportów Clifton Strengths';
   isWizardLinear: boolean = true;
-
+  selectedTalents: Talent[];
 
 
  ngOnInit() {
