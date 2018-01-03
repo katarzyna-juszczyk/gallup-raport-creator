@@ -4,8 +4,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { MatStepperModule, MatDialogModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatStepperModule,
+         MatDialogModule,
+         MatExpansionModule,
+         MatCheckboxModule,
+         } from '@angular/material';
+
 import { DndModule } from 'ng2-dnd';
 
 import { AppComponent } from './app.component';
@@ -19,6 +25,8 @@ import { DomainService } from './domain.service';
 import { FilterService } from './filter.service';
 import { TalentService } from './talent.service';
 import { TalentsOrderComponent } from './talents-order/talents-order.component';
+import { RaportConfigurationComponent } from './raport-configuration/raport-configuration.component';
+import { CreatePdfComponent } from './create-pdf/create-pdf.component';
 
 @NgModule({
   declarations: [
@@ -27,22 +35,26 @@ import { TalentsOrderComponent } from './talents-order/talents-order.component';
     TalentComponent,
     DomainsComponent,
     AutocompleteComponent,
-    TalentsOrderComponent
+    TalentsOrderComponent,
+    RaportConfigurationComponent,
+    CreatePdfComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    TagInputModule, 
+    TagInputModule,
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
     MatStepperModule,
     MatDialogModule,
+    MatExpansionModule,
+    MatCheckboxModule,
     DndModule.forRoot()
   ],
-  entryComponents: [TalentComponent],
+  entryComponents: [ TalentComponent ],
   providers: [ TalentService, DomainService, FilterService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Talent } from '../talent';
 import { Subscription } from 'rxjs/Subscription';
 import { TalentService } from '../talent.service';
+let html2pdf: any;
 
 @Component({
   selector: 'app-create-pdf',
@@ -19,6 +20,12 @@ export class CreatePdfComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  createPdf() {
+    const elementToPrint = document.getElementById('printMe');
+    html2pdf(elementToPrint);
+
   }
 
   ngOnDestroy() {

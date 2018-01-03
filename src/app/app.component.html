@@ -24,12 +24,13 @@
     </mat-step>
     <mat-step [stepControl]="step3" [completed]="false">
       <ng-template matStepLabel>Skonfiguruj raport</ng-template>
+      <app-raport-configuration></app-raport-configuration>
       <button mat-button matStepperPrevious>Poprzedni krok</button>
       <button mat-button matStepperNext>Następny krok</button>
     </mat-step>
     <mat-step [stepControl]="step4" [completed]="false">
       <ng-template matStepLabel>Podgląd raportu</ng-template>
-      You are now done.
+      <app-create-pdf></app-create-pdf>
       <div>
         <button mat-button matStepperPrevious>Poprzedni krok</button>
       </div>

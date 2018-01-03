@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Talent } from '../talent';
 import { Subscription } from 'rxjs/Subscription';
 import { TalentService } from '../talent.service';

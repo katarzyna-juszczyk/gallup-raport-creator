@@ -1,20 +1,22 @@
-<h2 class="m-5">Twoje Top Five Clifton Strengths</h2>
-
-<ol class="list-unstyled m-5">
-  <li *ngFor="let talent of talents" class="mb-5">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>{{talent.name}}       </h3>
-        <small [className]="'d-inline-block badge badge-pill badge-'+ talent.className" >{{talent.domain}}</small>
-      </div>
-      <div class="card-body">
-         <ul class="list-unstyled mb-5">
-          <li class="mb-4" *ngFor="let feature of talent.talentFeatures" [hidden]="!feature.included" >
-            <strong class="d-block">{{feature.name}}</strong>
-            <p class="ml-5">{{feature.description}}</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </li>
-</ol>
+<div id="printMe">
+  <h2 class="m-5">Twoje Top Five Clifton Strengths</h2>
+    <ol class="list-unstyled m-5">
+      <li *ngFor="let talent of talents" class="mb-5">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3>{{talent.name}}       </h3>
+            <small [className]="'d-inline-block badge badge-pill badge-'+ talent.className" >{{talent.domain}}</small>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-5">
+              <li class="mb-4" *ngFor="let feature of talent.talentFeatures" [hidden]="!feature.included" >
+                <strong class="d-block">{{feature.name}}</strong>
+                <p class="ml-5">{{feature.description}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+  </ol>
+</div>
+<button class="btn btn-success" (click)="createPdf()">Zapisz jako PDF</button>

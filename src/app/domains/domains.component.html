@@ -1,8 +1,8 @@
-<div [class.inactive]="inactive" class="btn-group btn-group-lg">
+<div [class.inactive]="inactive">
     <button 
       *ngFor="let domain of domains"
       (click)="onUpdateSelected(domain)"
-      class="btn"
+      class="btn m-1"
 
       [class.selected]="isSelected(domain)"
       [class.btn-danger]="domain ==='Myślenie strategiczne'"
