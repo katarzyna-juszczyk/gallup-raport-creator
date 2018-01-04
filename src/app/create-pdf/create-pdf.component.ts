@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Talent } from '../talent';
 import { Subscription } from 'rxjs/Subscription';
 import { TalentService } from '../talent.service';
-import html2pdf from "html2pdf.js/dist/include/html2pdf.es";
+import html2pdf from 'html2pdf.js/dist/include/html2pdf.es';
 
 @Component({
   selector: 'app-create-pdf',
@@ -24,7 +24,13 @@ export class CreatePdfComponent implements OnInit {
 
   createPdf() {
     const elementToPrint = document.getElementById('printMe');
-    html2pdf(elementToPrint);
+    html2pdf(elementToPrint, {
+        margin:       1,
+        filename:     'raport.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { dpi: 192, letterRendering: true },
+        jsPDF:        { unit: 'cm', format: 'letter', orientation: 'portrait' }
+      });
 
   }
 

@@ -1,5 +1,11 @@
+
+<button class="btn btn-success mx-5" (click)="createPdf()">
+  <mat-icon class="mr-1 align-middle">file_download</mat-icon>
+  Zapisz jako PDF
+</button>
+
 <div id="printMe">
-  <h2 class="m-5">Twoje Top Five Clifton Strengths</h2>
+  <h2 class="m-5">Top Five Clifton Strengths</h2>
     <ol class="list-unstyled m-5">
       <li *ngFor="let talent of talents" class="mb-5">
         <div class="card">
@@ -19,4 +25,3 @@
       </li>
   </ol>
 </div>
-<button class="btn btn-success" (click)="createPdf()">Zapisz jako PDF</button>

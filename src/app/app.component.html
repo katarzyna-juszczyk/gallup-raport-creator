@@ -9,30 +9,36 @@
   </div>
 
   <mat-horizontal-stepper [linear]="isWizardLinear">
-    <mat-step [stepControl]="step1" [completed]="false">
+    <mat-step>
       <ng-template matStepLabel>Wybierz talenty</ng-template>
       <app-domains class="d-flex flex-wrap justify-content-center mb-5"></app-domains>
-      <app-autocomplete class="mb-5 d-block"></app-autocomplete>
+      <app-autocomplete class="mb-5 mx-5 d-block"></app-autocomplete>
       <app-talents></app-talents>
-      <button mat-button matStepperNext>Następny krok</button>
+      <div class="stepper__foter mx-5 d-flex justify-content-end">
+          <button class="btn btn-sm btn-secondary" mat-button matStepperNext><span class="sr-only">Następny krok</span><mat-icon class="align-middle">navigate_next</mat-icon></button>
+      </div>
     </mat-step>
-    <mat-step [stepControl]="step2" [completed]="false">
+    <mat-step>
       <ng-template matStepLabel>Podaj kolejność talentów</ng-template>
       <app-talents-order></app-talents-order>
-      <button mat-button matStepperPrevious>Poprzedni krok</button>
-      <button mat-button matStepperNext>Następny krok</button>
+      <div class="stepper__foter mx-5 d-flex justify-content-between">
+          <button class="btn btn-sm btn-secondary" mat-button matStepperPrevious><mat-icon class="align-middle">navigate_before</mat-icon><span class="sr-only">Poprzedni krok</span></button>
+          <button class="btn btn-sm btn-secondary" mat-button matStepperNext><span class="sr-only">Następny krok</span><mat-icon class="align-middle">navigate_next</mat-icon></button>
+      </div>
     </mat-step>
-    <mat-step [stepControl]="step3" [completed]="false">
+    <mat-step>
       <ng-template matStepLabel>Skonfiguruj raport</ng-template>
       <app-raport-configuration></app-raport-configuration>
-      <button mat-button matStepperPrevious>Poprzedni krok</button>
-      <button mat-button matStepperNext>Następny krok</button>
+      <div class="stepper__foter mx-5 d-flex justify-content-between">
+          <button class="btn btn-sm btn-secondary" mat-button matStepperPrevious><mat-icon class="align-middle">navigate_before</mat-icon><span class="sr-only">Poprzedni krok</span></button>
+          <button class="btn btn-sm btn-secondary" mat-button matStepperNext><span class="sr-only">Następny krok</span><mat-icon class="align-middle">navigate_next</mat-icon></button>
+      </div>
     </mat-step>
-    <mat-step [stepControl]="step4" [completed]="false">
+    <mat-step>
       <ng-template matStepLabel>Podgląd raportu</ng-template>
       <app-create-pdf></app-create-pdf>
-      <div>
-        <button mat-button matStepperPrevious>Poprzedni krok</button>
+      <div class="stepper__footer mx-5 d-flex justify-content-between">
+        <button class="btn btn-sm btn-secondary" mat-button matStepperPrevious><mat-icon class="align-middle">navigate_before</mat-icon><span class="sr-only">Poprzedni krok</span></button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

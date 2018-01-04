@@ -10,6 +10,7 @@ import { MatStepperModule,
          MatDialogModule,
          MatExpansionModule,
          MatCheckboxModule,
+         MatIconModule
          } from '@angular/material';
 
 import { DndModule } from 'ng2-dnd';
@@ -51,6 +52,7 @@ import { CreatePdfComponent } from './create-pdf/create-pdf.component';
     MatDialogModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatIconModule,
     DndModule.forRoot()
   ],
   entryComponents: [ TalentComponent ],
