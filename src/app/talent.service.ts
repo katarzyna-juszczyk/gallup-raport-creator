@@ -20,15 +20,10 @@ export class TalentService {
     return this.getTalents().find( talent => talent.name === name);
   }
 
-  getDomainTalents(domain:string): Talent[] {
-   return this.getTalents().filter( (talent) => talent.domain === domain );
-  }
-
-
   private talentsUpdatedSource = new Subject <any> ();
-    
+
   talentsUpdated$ = this.talentsUpdatedSource.asObservable();
-    
+
 
   onUpdateSelectedTalents(talents: Talent[]) {
     this.talentsUpdatedSource.next(talents);
