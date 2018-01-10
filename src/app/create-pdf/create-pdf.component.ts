@@ -12,6 +12,7 @@ import html2pdf from 'html2pdf.js/dist/include/html2pdf.es';
 export class CreatePdfComponent implements OnInit {
   talents: Talent[];
   talentsSubscription: Subscription;
+  coachee: String;
 
   constructor( private talentService: TalentService ) {
     this.talentsSubscription = talentService.talentsUpdated$.subscribe( (talents) => {
@@ -24,11 +25,16 @@ export class CreatePdfComponent implements OnInit {
 
   createPdf() {
     const elementToPrint = document.getElementById('printMe');
+    const elementsToExclude = document.getElementsByClassName('data-html2canvas-ignore');
+    const filename = this.coachee ? `raport_${this.coachee.replace(/ /g,"_")}.pdf` : 'raport.pdf'
     html2pdf(elementToPrint, {
         margin:       1,
-        filename:     'raport.pdf',
+        filename:     filename,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { dpi: 192, letterRendering: true },
+        html2canvas:  { 
+          dpi: 192, 
+          letterRendering: true
+        },
         jsPDF:        { unit: 'cm', format: 'letter', orientation: 'portrait' }
       });
 

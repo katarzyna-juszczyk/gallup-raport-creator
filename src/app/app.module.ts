@@ -10,7 +10,8 @@ import { MatStepperModule,
          MatDialogModule,
          MatExpansionModule,
          MatCheckboxModule,
-         MatIconModule
+         MatIconModule,
+         MatInputModule
          } from '@angular/material';
 
 import { DndModule } from 'ng2-dnd';
@@ -28,6 +29,7 @@ import { TalentService } from './talent.service';
 import { TalentsOrderComponent } from './talents-order/talents-order.component';
 import { RaportConfigurationComponent } from './raport-configuration/raport-configuration.component';
 import { CreatePdfComponent } from './create-pdf/create-pdf.component';
+import { CoacheeComponent } from './coachee/coachee.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CreatePdfComponent } from './create-pdf/create-pdf.component';
     AutocompleteComponent,
     TalentsOrderComponent,
     RaportConfigurationComponent,
-    CreatePdfComponent
+    CreatePdfComponent,
+    CoacheeComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { CreatePdfComponent } from './create-pdf/create-pdf.component';
     MatExpansionModule,
     MatCheckboxModule,
     MatIconModule,
+    MatInputModule,
     DndModule.forRoot()
   ],
   entryComponents: [ TalentComponent ],

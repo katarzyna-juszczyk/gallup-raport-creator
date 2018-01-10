@@ -1,11 +1,16 @@
 
-<button class="btn btn-success mx-5" (click)="createPdf()">
-  <mat-icon class="mr-1 align-middle">file_download</mat-icon>
-  Zapisz jako PDF
-</button>
+<div class="pdf__coachee-input m-5 data-html2canvas-ignore" data-html2canvas-ignore="true">
+      <mat-form-field>
+        <input matInput [(ngModel)]="coachee" placeholder="To raport dla:" required>
+      </mat-form-field>
+  </div>
 
+  <button class="btn btn-success mx-5 data-html2canvas-ignore" (click)="createPdf()" data-html2canvas-ignore="true">
+    <mat-icon class="mr-1 align-middle">file_download</mat-icon>
+    Zapisz jako PDF
+  </button>
 <div id="printMe">
-  <h2 class="m-5">Top Five Clifton Strengths</h2>
+  <h2 class="m-5">Top Five Clifton Strengths {{coachee}}</h2>
     <ol class="list-unstyled m-5">
       <li *ngFor="let talent of talents; let last = last" class="mb-5 talent">
         <div class="card">
