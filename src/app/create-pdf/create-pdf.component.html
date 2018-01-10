@@ -7,11 +7,11 @@
 <div id="printMe">
   <h2 class="m-5">Top Five Clifton Strengths</h2>
     <ol class="list-unstyled m-5">
-      <li *ngFor="let talent of talents" class="mb-5">
+      <li *ngFor="let talent of talents; let last = last" class="mb-5 talent">
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h3>{{talent.name}}       </h3>
-            <small [className]="'d-inline-block badge badge-pill badge-'+ talent.className" >{{talent.domain}}</small>
+            <small [className]="'d-inline-block badge   '+ talent.className" >{{talent.domain}}</small>
           </div>
           <div class="card-body">
             <ul class="list-unstyled mb-5">
@@ -22,6 +22,12 @@
             </ul>
           </div>
         </div>
+        <div class="html2pdf__page-break"  *ngIf="!last"></div>
       </li>
+      
   </ol>
+
+  <footer class="app__footer text-center  mt-5 pt-5 pb-4">
+  Copyright 2017 <strong>Dominik Juszczyk</strong>  |  tel: 662 027 786  |  @zpasjaomocnychstronach  |  dominik@npp.run  |  http://npp.com
+  </footer>
 </div>

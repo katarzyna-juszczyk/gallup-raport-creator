@@ -109,16 +109,16 @@ export class TalentsComponent implements OnInit {
     this.talentsOrigin = this.talentsOrigin.map((talent) => {
       switch (talent.domain) {
         case "Myślenie strategiczne":
-          talent.className = "danger";
+          talent.className = "theme-red";
           break;
         case "Działanie":
-          talent.className = "primary";
+          talent.className = "theme-purple";
           break;
         case "Budowanie relacji":
-          talent.className = "dark";
+          talent.className = "theme-blue";
           break;
         case "Wywieranie wpływu":
-          talent.className = "warning";
+          talent.className = "theme-yellow";
           break;
 
       };

@@ -5,7 +5,7 @@
         {{talent.name}}       
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <small [className]="'d-inline-block mb-3 badge badge-pill badge-'+ talent.className" >{{talent.domain}}</small>
+    <small [className]="'d-inline-block mb-3 badge   '+ talent.className" >{{talent.domain}}</small>
     <ul class="list-unstyled mb-5">
       <li class="mb-4" *ngFor="let feature of talent.talentFeatures">
         <mat-checkbox color="primary" [(ngModel)]="feature.included" [checked]="feature.included" (change)="onUpdateIncluded(talent)">

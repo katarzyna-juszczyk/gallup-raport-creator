@@ -1,6 +1,6 @@
 <ul class="list-group m-5" dnd-sortable-container [sortableData]="talents">
     <li *ngFor="let talent of talents; let i = index" class="list-group-item d-flex justify-content-between align-items-center" dnd-sortable [sortableIndex]="i">
       <div><mat-icon class="mr-4 align-middle">swap_vert</mat-icon>{{talent.name}}</div>
-      <small [className]="'badge badge-pill badge-'+ talent.className" >{{talent.domain}}</small>
+      <small [className]="'badge   '+ talent.className" >{{talent.domain}}</small>
     </li>
 </ul>
